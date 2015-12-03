@@ -44,6 +44,10 @@ public class BusStop implements ReferenceablePoint {
 		return point;
 	}
 
+	public double distanceTo(ReferenceablePoint to) {
+		return point.distanceTo(to);
+	}
+
 	private String idl;
 
 	private String idp;

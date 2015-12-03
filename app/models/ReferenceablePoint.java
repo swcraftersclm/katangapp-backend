@@ -9,4 +9,6 @@ public interface ReferenceablePoint {
 
 	double getLongitude();
 
+	double distanceTo(ReferenceablePoint point);
+
 }
