@@ -1,5 +1,7 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 /**
@@ -15,6 +17,7 @@ public class QueryResult {
 		return results;
 	}
 
+	@JsonProperty("paradas")
 	private List<BusStopResult> results;
 
 }

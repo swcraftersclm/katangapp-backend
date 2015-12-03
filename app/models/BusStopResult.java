@@ -1,5 +1,7 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 /**
@@ -21,8 +23,10 @@ public class BusStopResult {
 		return results;
 	}
 
+	@JsonProperty("parada")
 	private BusStop busStop;
 
+	@JsonProperty("tiempos")
 	private List<RouteResult> results;
 
 }

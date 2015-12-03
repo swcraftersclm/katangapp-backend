@@ -1,5 +1,7 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author mdelapenya
  */
@@ -45,6 +47,7 @@ public class BusStop implements ReferenceablePoint {
 
 	private String idp;
 
+	@JsonProperty("direccion")
 	private String address;
 
 	private Point point;
