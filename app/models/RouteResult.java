@@ -3,11 +3,23 @@ package models;
 /**
  * @author mdelapenya
  */
-public class RouteResult {
+public class RouteResult implements Comparable<RouteResult> {
 
 	public RouteResult(String routeId, long time) {
 		this.idl = routeId;
 		this.time = time;
+	}
+
+	@Override
+	public int compareTo(RouteResult that) {
+		if (this.time < that.getTime()) {
+			return -1;
+		}
+		else if (this.time > that.time) {
+			return 1;
+		}
+
+		return 0;
 	}
 
 	public String getIdl() {
