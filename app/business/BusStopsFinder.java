@@ -1,12 +1,18 @@
 package business;
 
+import business.geolocation.GeoLocator;
+
 import models.BusStop;
 import models.BusStopResult;
+import models.Point;
 import models.QueryResult;
+import models.ReferenceablePoint;
 import models.RouteResult;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author mdelapenya
@@ -16,13 +22,24 @@ public class BusStopsFinder implements Finder{
 	public QueryResult findRoutes(
 		double latitude, double longitude, int radius) {
 
+		ReferenceablePoint currentLocation = new Point(latitude, longitude);
+
+		// TODO: populate with the whole BusStops data points
+		Set<ReferenceablePoint> dataset = new HashSet<>();
+
+		List<ReferenceablePoint> closestPoints = GeoLocator.closestPoints(
+			currentLocation, dataset, radius);
+
 		List<BusStopResult> busStopResults = new ArrayList<>();
 
-		for (int i = 1; i <= 2; i++) {
+		if (closestPoints.isEmpty()) {
+			return new QueryResult(busStopResults);
+		}
 
+		for (ReferenceablePoint closestPoint : closestPoints) {
 			BusStop busStop = new BusStop(
-				"41", "P0" + i, -19.0000-i, 56.787812*i,
-				"c/ Jarama " + i + ", Toledo, España");
+				"41", "P0", closestPoint.getLatitude(),
+				closestPoint.getLongitude(), "c/ Jarama, Toledo, España");
 
 			List<RouteResult> routeResults = new ArrayList<>();
 
