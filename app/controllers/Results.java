@@ -15,14 +15,14 @@ import play.mvc.Result;
  */
 public class Results extends Controller {
 
-    public static Result index(String latitude, String longitude, int radius) {
+    public static Result index(String lt, String ln, int r) {
         Finder busStopFinder = new BusStopsFinder();
 
-        double dLatitude = Double.parseDouble(latitude);
-        double dLongitude = Double.parseDouble(longitude);
+        double dLatitude = Double.parseDouble(lt);
+        double dLongitude = Double.parseDouble(ln);
 
         QueryResult queryResult = busStopFinder.findRoutes(
-            dLatitude, dLongitude, radius);
+            dLatitude, dLongitude, r);
 
         return ok(Json.toJson(queryResult));
     }
