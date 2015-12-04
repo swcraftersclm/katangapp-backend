@@ -2,6 +2,8 @@ package business;
 
 import business.geolocation.GeoLocator;
 
+import business.http.HttpClient;
+import business.parser.HTMLParser;
 import business.store.BusStopStore;
 
 import models.BusStop;
@@ -12,6 +14,7 @@ import models.ReferenceablePoint;
 import models.RouteResult;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -43,15 +46,11 @@ public class BusStopsFinder implements Finder{
 		for (ReferenceablePoint closestPoint : closestPoints) {
 			BusStop busStop = (BusStop)closestPoint;
 
-			List<RouteResult> routeResults = new ArrayList<>();
+			String responseHtml = HttpClient.get(
+				busStop.getIdl(), busStop.getIdp(), busStop.getIdo());
 
-			for (int j = 1; j < 5; j++) {
-				String routeId = "L" + j;
-
-				RouteResult routeResult = new RouteResult(routeId, 1000*j);
-
-				routeResults.add(routeResult);
-			}
+			List<RouteResult> routeResults = HTMLParser.parseResponse(
+				busStop.getIdl(), busStop.getIdp(), new Date(), responseHtml);
 
 			BusStopResult busStopResult = new BusStopResult(
 				busStop, routeResults);
