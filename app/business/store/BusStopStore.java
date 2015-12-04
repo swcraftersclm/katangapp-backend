@@ -10,9 +10,9 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author mdelapenya
  */
-public final class BusStopStore implements Map<String, BusStop> {
+public final class BusStopStore implements Store {
 
-	public static BusStopStore getInstance() {
+	public static Store getInstance() {
 		if (instance == null) {
 			instance = new BusStopStore();
 		}
@@ -80,15 +80,15 @@ public final class BusStopStore implements Map<String, BusStop> {
 		return getInstance().getStore().entrySet();
 	}
 
+	public Map<String, BusStop> getStore() {
+		return store;
+	}
+
 	private BusStopStore() {
 		store = new ConcurrentHashMap<>();
 	}
 
-	private Map<String, BusStop> getStore() {
-		return store;
-	}
-
-	private static BusStopStore instance;
+	private static Store instance;
 	private static Map<String, BusStop> store;
 
 }

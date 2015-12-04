@@ -5,6 +5,7 @@ import business.geolocation.GeoLocator;
 import business.http.HttpClient;
 import business.parser.HTMLParser;
 import business.store.BusStopStore;
+import business.store.Store;
 
 import models.BusStop;
 import models.BusStopResult;
@@ -22,17 +23,15 @@ import java.util.Set;
 /**
  * @author mdelapenya
  */
-public class BusStopsFinder implements Finder{
+public class BusStopsFinder implements Finder {
 
 	public QueryResult findRoutes(
 		double latitude, double longitude, int radius) {
 
 		ReferenceablePoint currentLocation = new Point(latitude, longitude);
 
-		BusStopStore busStopStore = BusStopStore.getInstance();
-
 		Set<ReferenceablePoint> dataSet = new HashSet<ReferenceablePoint>(
-			busStopStore.values());
+			getStore().values());
 
 		List<ReferenceablePoint> closestPoints = GeoLocator.closestPoints(
 			currentLocation, dataSet, radius);
@@ -60,5 +59,11 @@ public class BusStopsFinder implements Finder{
 
 		return new QueryResult(busStopResults);
 	}
+
+	public Store getStore() {
+		return busStopStore;
+	}
+
+	private static Store busStopStore = BusStopStore.getInstance();
 
 }
