@@ -10,5 +10,7 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  javaWs
+  javaWs,
+  "org.jsoup" % "jsoup" % "1.8.3",
+  "commons-io" % "commons-io" % "2.4" % Test
 )
