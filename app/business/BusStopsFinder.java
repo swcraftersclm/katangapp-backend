@@ -2,6 +2,8 @@ package business;
 
 import business.geolocation.GeoLocator;
 
+import business.store.BusStopStore;
+
 import models.BusStop;
 import models.BusStopResult;
 import models.Point;
@@ -10,6 +12,7 @@ import models.ReferenceablePoint;
 import models.RouteResult;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,11 +27,15 @@ public class BusStopsFinder implements Finder{
 
 		ReferenceablePoint currentLocation = new Point(latitude, longitude);
 
-		// TODO: populate with the whole BusStops data points
-		Set<ReferenceablePoint> dataset = new HashSet<>();
+		BusStopStore busStopStore = BusStopStore.getInstance();
+
+		Collection<BusStop> busStops = busStopStore.values();
+
+		Set<ReferenceablePoint> dataSet = new HashSet<ReferenceablePoint>(
+			busStops);
 
 		List<ReferenceablePoint> closestPoints = GeoLocator.closestPoints(
-			currentLocation, dataset, radius);
+			currentLocation, dataSet, radius);
 
 		List<BusStopResult> busStopResults = new ArrayList<>();
 
