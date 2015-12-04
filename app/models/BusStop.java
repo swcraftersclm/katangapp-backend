@@ -9,11 +9,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BusStop implements ReferenceablePoint {
 
 	public BusStop(
-		String routeId, String stopId, double latitude, double longitude,
-		String address) {
+		String routeId, String stopId, String orderId, double latitude,
+		double longitude, String address) {
 
 		this.address = address;
 		this.idl = routeId;
+		this.ido = orderId;
 		this.idp = stopId;
 		this.point = new Point(latitude, longitude);
 	}
@@ -24,6 +25,10 @@ public class BusStop implements ReferenceablePoint {
 
 	public String getIdl() {
 		return idl;
+	}
+
+	public String getIdo() {
+		return ido;
 	}
 
 	public String getIdp() {
@@ -49,6 +54,8 @@ public class BusStop implements ReferenceablePoint {
 	}
 
 	private String idl;
+
+	private String ido;
 
 	private String idp;
 

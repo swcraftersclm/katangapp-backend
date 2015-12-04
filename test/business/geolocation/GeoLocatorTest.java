@@ -34,7 +34,8 @@ public class GeoLocatorTest {
 
 			points.add(
 				new BusStop(
-					"L9" + i, "P0" + i, latitude, longitude, "Home" + i));
+					"L9" + i, "P0" + i, i + ".0000", latitude, longitude,
+					"Home" + i));
 		}
 
 		List<ReferenceablePoint> referenceablePoints = GeoLocator.closestPoints(
