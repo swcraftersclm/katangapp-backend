@@ -24,10 +24,6 @@ public class GeoLocator {
 		ReferenceablePoint currentLocation, Set<ReferenceablePoint> points,
 		int radiusMeters, int maxElements) {
 
-		if (radiusMeters == 0) {
-			radiusMeters = Integer.MAX_VALUE;
-		}
-
 		List<ReferenceablePoint> closestPoints = new ArrayList<>();
 
 		List<PolarSegment> polarSegments = new ArrayList<>();
