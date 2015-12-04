@@ -12,7 +12,6 @@ import models.ReferenceablePoint;
 import models.RouteResult;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,10 +28,8 @@ public class BusStopsFinder implements Finder{
 
 		BusStopStore busStopStore = BusStopStore.getInstance();
 
-		Collection<BusStop> busStops = busStopStore.values();
-
 		Set<ReferenceablePoint> dataSet = new HashSet<ReferenceablePoint>(
-			busStops);
+			busStopStore.values());
 
 		List<ReferenceablePoint> closestPoints = GeoLocator.closestPoints(
 			currentLocation, dataSet, radius);
