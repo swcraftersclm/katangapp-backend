@@ -44,9 +44,7 @@ public class BusStopsFinder implements Finder{
 		}
 
 		for (ReferenceablePoint closestPoint : closestPoints) {
-			BusStop busStop = new BusStop(
-				"41", "P0", closestPoint.getLatitude(),
-				closestPoint.getLongitude(), "c/ Jarama, Toledo, España");
+			BusStop busStop = (BusStop)closestPoint;
 
 			List<RouteResult> routeResults = new ArrayList<>();
 
