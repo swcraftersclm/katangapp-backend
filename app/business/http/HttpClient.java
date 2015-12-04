@@ -26,10 +26,11 @@ public class HttpClient {
 			}
 		);
 
-		return documentPromise.get(5000);
+		return documentPromise.get(TIMEOUT);
 	}
 
 	private static final String ENDPOINT =
 		"http://unauto.twa.es/code/getparadas.php?idl={0}&idp={1}&ido={2}";
 
+	private static final long TIMEOUT = 5000;
 }
