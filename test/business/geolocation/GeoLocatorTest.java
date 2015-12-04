@@ -2,14 +2,17 @@ package business.geolocation;
 
 import static org.fest.assertions.Assertions.assertThat;
 
+import business.store.MockBusStopStore;
+
 import models.BusStop;
 import models.Point;
 import models.ReferenceablePoint;
+
 import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -19,34 +22,21 @@ public class GeoLocatorTest {
 
 	@Test
 	public void testClosest() {
-		ReferenceablePoint current = new Point(39.0, -4.075);
+		double latitude = 39.862658;
+		double longitude = -4.025088;
 
-		Set<ReferenceablePoint> points = new HashSet<>();
+		ReferenceablePoint current = new Point(latitude, longitude);
 
-		for (int i = 1; i <= 20; i++) {
-			Random r = new Random();
+		MockBusStopStore mockBusStopStore = new MockBusStopStore();
 
-			double latitude = RANGE_MIN_LAT +
-				(RANGE_MAX_LAT - RANGE_MIN_LAT) * r.nextDouble();
+		Map<String, BusStop> store = mockBusStopStore.getStore();
 
-			double longitude = RANGE_MIN_LONG +
-				(RANGE_MAX_LONG - RANGE_MIN_LONG) * r.nextDouble();
-
-			points.add(
-				new BusStop(
-					"L9" + i, "P0" + i, i + ".0000", latitude, longitude,
-					"Home" + i));
-		}
+		Set<ReferenceablePoint> points = new HashSet<ReferenceablePoint>(store.values());
 
 		List<ReferenceablePoint> referenceablePoints = GeoLocator.closestPoints(
-			current, points, 0);
+			current, points, 2000);
 
 		assertThat(referenceablePoints).hasSize(3);
 	}
-
-	private static final double RANGE_MAX_LAT = 90;
-	private static final double RANGE_MIN_LAT = -90;
-	private static final double RANGE_MAX_LONG = 180;
-	private static final double RANGE_MIN_LONG = -180;
 
 }
