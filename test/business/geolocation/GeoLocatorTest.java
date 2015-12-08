@@ -33,7 +33,8 @@ public class GeoLocatorTest {
 		List<ReferenceablePoint> referenceablePoints = GeoLocator.closestPoints(
 			current, points, 2000);
 
-		assertThat(referenceablePoints).hasSize(3);
+		assertThat(referenceablePoints).hasSize(
+			GeoLocator.DEFAULT_MAX_ELEMENTS);
 	}
 
 }

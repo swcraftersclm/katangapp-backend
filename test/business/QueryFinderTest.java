@@ -2,6 +2,7 @@ package business;
 
 import static org.fest.assertions.Assertions.assertThat;
 
+import business.geolocation.GeoLocator;
 import business.store.MockBusStopStore;
 
 import models.BusStopResult;
@@ -36,7 +37,7 @@ public class QueryFinderTest extends WithApplication{
 
 		List<BusStopResult> results = queryResult.getResults();
 
-		assertThat(results).hasSize(3);
+		assertThat(results).hasSize(GeoLocator.DEFAULT_MAX_ELEMENTS);
 	}
 
 	@Test

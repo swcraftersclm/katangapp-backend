@@ -13,11 +13,14 @@ import java.util.Set;
  */
 public class GeoLocator {
 
+	public static final int DEFAULT_MAX_ELEMENTS = 3;
+
 	public static List<ReferenceablePoint> closestPoints(
 		ReferenceablePoint currentLocation, Set<ReferenceablePoint> points,
 		int radiusMeters) {
 
-		return closestPoints(currentLocation, points, radiusMeters, 3);
+		return closestPoints(
+			currentLocation, points, radiusMeters, DEFAULT_MAX_ELEMENTS);
 	}
 
 	public static List<ReferenceablePoint> closestPoints(
