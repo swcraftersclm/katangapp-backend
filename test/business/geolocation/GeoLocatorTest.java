@@ -22,6 +22,18 @@ public class GeoLocatorTest {
 
 	@Test
 	public void testClosest() {
+		testGetMaxElementsReturnedByClosestPoints(
+			GeoLocator.DEFAULT_MAX_ELEMENTS, 2000);
+	}
+
+	@Test
+	public void testClosestShouldNotReturnDefaultMaxElements() {
+		testGetMaxElementsReturnedByClosestPoints(4, 2000);
+	}
+
+	private void testGetMaxElementsReturnedByClosestPoints(
+		int maxElements, int radius) {
+
 		ReferenceablePoint current = TestPointFactory.getPuertaBisagra();
 
 		MockBusStopStore mockBusStopStore = new MockBusStopStore();
@@ -31,10 +43,9 @@ public class GeoLocatorTest {
 		Set<ReferenceablePoint> points = new HashSet<ReferenceablePoint>(store.values());
 
 		List<ReferenceablePoint> referenceablePoints = GeoLocator.closestPoints(
-			current, points, 2000);
+			current, points, radius, maxElements);
 
-		assertThat(referenceablePoints).hasSize(
-			GeoLocator.DEFAULT_MAX_ELEMENTS);
+		assertThat(referenceablePoints).hasSize(maxElements);
 	}
 
 }
