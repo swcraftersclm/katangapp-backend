@@ -5,8 +5,8 @@ import static org.fest.assertions.Assertions.assertThat;
 import business.store.MockBusStopStore;
 
 import models.BusStop;
-import models.Point;
 import models.ReferenceablePoint;
+import models.TestPointFactory;
 
 import org.junit.Test;
 
@@ -22,10 +22,7 @@ public class GeoLocatorTest {
 
 	@Test
 	public void testClosest() {
-		double latitude = 39.862658;
-		double longitude = -4.025088;
-
-		ReferenceablePoint current = new Point(latitude, longitude);
+		ReferenceablePoint current = TestPointFactory.getPuertaBisagra();
 
 		MockBusStopStore mockBusStopStore = new MockBusStopStore();
 

@@ -5,7 +5,9 @@ import static org.fest.assertions.Assertions.assertThat;
 import business.store.MockBusStopStore;
 
 import models.BusStopResult;
+import models.Point;
 import models.QueryResult;
+import models.TestPointFactory;
 
 import java.util.List;
 
@@ -24,14 +26,13 @@ public class QueryFinderTest extends WithApplication{
 	public void testFindRoutes() {
 		Finder busStopFinder = Mockito.spy(new BusStopsFinder());
 
-		double latitude = 39.862658;
-		double longitude = -4.025088;
-		int radius = 2000;
-
 		mockStore(busStopFinder);
 
+		Point puertaBisagra = TestPointFactory.getPuertaBisagra();
+		int radius = 2000;
+
 		QueryResult queryResult = busStopFinder.findRoutes(
-			latitude, longitude, radius);
+			puertaBisagra.getLatitude(), puertaBisagra.getLongitude(), radius);
 
 		List<BusStopResult> results = queryResult.getResults();
 
@@ -42,14 +43,13 @@ public class QueryFinderTest extends WithApplication{
 	public void testFindRoutesWithoutRadiusShouldNotReturnRoutes() {
 		Finder busStopFinder = Mockito.spy(new BusStopsFinder());
 
-		double latitude = 39.862658;
-		double longitude = -4.025088;
-		int radius = 0;
-
 		mockStore(busStopFinder);
 
+		Point puertaBisagra = TestPointFactory.getPuertaBisagra();
+		int radius = 0;
+
 		QueryResult queryResult = busStopFinder.findRoutes(
-			latitude, longitude, radius);
+			puertaBisagra.getLatitude(), puertaBisagra.getLongitude(), radius);
 
 		List<BusStopResult> results = queryResult.getResults();
 
