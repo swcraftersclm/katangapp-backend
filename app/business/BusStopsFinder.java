@@ -2,6 +2,7 @@ package business;
 
 import business.geolocation.GeoLocator;
 import business.http.HttpClient;
+import business.http.HttpService;
 import business.parser.HTMLParser;
 import business.store.BusStopStore;
 import business.store.Store;
@@ -41,7 +42,7 @@ public class BusStopsFinder implements Finder {
 			return new QueryResult(busStopResults);
 		}
 
-		HttpClient httpClient = new HttpClient();
+		HttpService httpClient = new HttpClient();
 
 		for (ReferenceablePoint closestPoint : closestPoints) {
 			BusStop busStop = (BusStop)closestPoint;

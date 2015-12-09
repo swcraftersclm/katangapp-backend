@@ -24,7 +24,7 @@ public class HttpClientTest extends WithApplication {
 		String idp = "P001";
 		String ido = "1.00000";
 
-		HttpClient httpClient = Mockito.spy(new HttpClient());
+		HttpService httpClient = Mockito.spy(new HttpClient());
 
 		mockHttpService(httpClient);
 
@@ -33,7 +33,7 @@ public class HttpClientTest extends WithApplication {
 		assertThat(response).isNotEmpty();
 	}
 
-	private void mockHttpService(HttpClient client) throws IOException {
+	private void mockHttpService(HttpService client) throws IOException {
 		String mockResponse = IOTestUtils.readFile("sample-P001.html");
 
 		Mockito.when(

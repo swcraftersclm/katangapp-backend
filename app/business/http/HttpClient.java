@@ -10,12 +10,26 @@ import play.libs.F.Promise;
 /**
  * @author mdelapenya
  */
-public class HttpClient {
+public class HttpClient implements HttpService {
 
 	public HttpClient() {
 	}
 
-	public String get(String idl, String idp, String ido) {
+	@Override
+	public String get(String... params) {
+		if (params == null || params.length == 0) {
+			throw new IllegalArgumentException(
+				"Cannot invoke the service without parameters");
+		}
+
+		String idl = params[0];
+		String idp = params[1];
+		String ido = params[2];
+
+		return get(idl, idp, ido);
+	}
+
+	private String get(String idl, String idp, String ido) {
 		String url = MessageFormat.format(ENDPOINT, idl, idp, ido);
 
 		Promise<String> documentPromise = WS.url(url).get().map(
@@ -37,4 +51,5 @@ public class HttpClient {
 		"http://unauto.twa.es/code/getparadas.php?idl={0}&idp={1}&ido={2}";
 
 	private static final long TIMEOUT = 5000;
+
 }
