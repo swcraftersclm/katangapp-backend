@@ -8,6 +8,7 @@ import static play.test.Helpers.status;
 
 import business.mocks.MockBusStopStore;
 
+import business.mocks.MockResultsController;
 import models.BusStop;
 import models.Point;
 import models.TestPointFactory;
@@ -31,6 +32,8 @@ public class ResultsTest extends WithApplication {
 		String latitude = String.valueOf(puertaBisagra.getLatitude());
 		String longitude = String.valueOf(puertaBisagra.getLongitude());
 		int radius = 1000;
+
+		MockResultsController.mockRequest();
 
 		Result result = Results.index(latitude, longitude, radius);
 
