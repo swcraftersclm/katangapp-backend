@@ -40,3 +40,14 @@ should display the default `Play! Framework` main page.
 To verify the business logic of the application, go to
 `http://localhost:9000/paradas`, that represents the endpoint of the service
 that calculates the closest bus stops to a specific point.
+
+## Backward compatibility
+To verify that the former system' business logic is working as expected, go to
+`http://localhost:9000/unauto`, that represents the endpoint of the former
+system. It needs the following parameters to work:
+
+ - idl: Route identifier (String)
+ - idp: Bus Stop identifier (String)
+ - ido: Bus Stop Order (String)
+
+In example: `http://localhost:9000/unauto?idl=41&idp=P001&ido=1.00000`
