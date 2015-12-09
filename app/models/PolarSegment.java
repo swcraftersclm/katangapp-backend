@@ -11,18 +11,6 @@ public class PolarSegment implements Comparable<PolarSegment> {
 		this.distance = from.distanceTo(to);
 	}
 
-	public double getDistance() {
-		return distance;
-	}
-
-	public ReferenceablePoint getTo() {
-		return to;
-	}
-
-	public ReferenceablePoint getFrom() {
-		return from;
-	}
-
 	@Override
 	public int compareTo(PolarSegment that) {
 		if (distance < that.distance) {
@@ -33,6 +21,18 @@ public class PolarSegment implements Comparable<PolarSegment> {
 		}
 
 		return 0;
+	}
+
+	public double getDistance() {
+		return distance;
+	}
+
+	public ReferenceablePoint getFrom() {
+		return from;
+	}
+
+	public ReferenceablePoint getTo() {
+		return to;
 	}
 
 	private final double distance;

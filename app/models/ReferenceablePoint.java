@@ -5,10 +5,10 @@ package models;
  */
 public interface ReferenceablePoint {
 
+	double distanceTo(ReferenceablePoint point);
+
 	double getLatitude();
 
 	double getLongitude();
-
-	double distanceTo(ReferenceablePoint point);
 
 }

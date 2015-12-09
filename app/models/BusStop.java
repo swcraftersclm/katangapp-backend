@@ -19,6 +19,10 @@ public class BusStop implements ReferenceablePoint {
 		this.point = new Point(latitude, longitude);
 	}
 
+	public double distanceTo(ReferenceablePoint to) {
+		return point.distanceTo(to);
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -47,10 +51,6 @@ public class BusStop implements ReferenceablePoint {
 
 	public Point getPoint() {
 		return point;
-	}
-
-	public double distanceTo(ReferenceablePoint to) {
-		return point.distanceTo(to);
 	}
 
 	private String idl;
