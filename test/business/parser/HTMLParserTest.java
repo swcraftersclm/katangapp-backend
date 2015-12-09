@@ -2,18 +2,12 @@ package business.parser;
 
 import static org.fest.assertions.Assertions.assertThat;
 
+import business.IOTestUtils;
 import models.RouteResult;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-
-import org.junit.Rule;
-import org.junit.rules.TemporaryFolder;
 import org.junit.Test;
 
 /**
@@ -21,12 +15,9 @@ import org.junit.Test;
  */
 public class HTMLParserTest {
 
-	@Rule
-	public TemporaryFolder temporaryFolder = new TemporaryFolder();
-
 	@Test
 	public void testParseResponse() throws Exception {
-		String html = read("/resources/sample.html");
+		String html = IOTestUtils.readFile("sample.html");
 
 		Date now = new Date();
 
@@ -42,7 +33,7 @@ public class HTMLParserTest {
 
 	@Test
 	public void testParseResponseForP001() throws Exception {
-		String html = read("/resources/sample-P001.html");
+		String html = IOTestUtils.readFile("sample-P001.html");
 
 		Date now = new Date();
 
@@ -82,18 +73,6 @@ public class HTMLParserTest {
 		assertThat(routeResults.get(28).getIdl()).isEqualTo("L72b");
 		assertThat(routeResults.get(29).getIdl()).isEqualTo("L94");
 		assertThat(routeResults.get(30).getIdl()).isEqualTo("L94");
-	}
-
-	private String read(String path) throws IOException {
-		InputStream is = this.getClass().getResourceAsStream(path);
-
-		temporaryFolder.create();
-
-		File sample = temporaryFolder.newFile();
-
-		FileUtils.copyInputStreamToFile(is, sample);
-
-		return FileUtils.readFileToString(sample);
 	}
 
 }
