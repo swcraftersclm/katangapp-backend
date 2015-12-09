@@ -30,6 +30,11 @@ public class RouteResult implements Comparable<RouteResult> {
 		return time;
 	}
 
+	@Override
+	public String toString() {
+		return "idl: " + idl + ", time: " + time;
+	}
+
 	private String idl;
 	private long time;
 

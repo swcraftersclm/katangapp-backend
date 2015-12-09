@@ -35,6 +35,11 @@ public class PolarSegment implements Comparable<PolarSegment> {
 		return to;
 	}
 
+	@Override
+	public String toString() {
+		return "from: [" + from + "], to: [" + to + "], distance: " + distance;
+	}
+
 	private final double distance;
 	private final ReferenceablePoint from;
 	private final ReferenceablePoint to;

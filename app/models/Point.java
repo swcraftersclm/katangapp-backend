@@ -45,6 +45,11 @@ public class Point implements ReferenceablePoint {
 		return longitude;
 	}
 
+	@Override
+	public String toString() {
+		return "lt: " + latitude + ", ln: " + longitude;
+	}
+
 	private double latitude;
 	private double longitude;
 

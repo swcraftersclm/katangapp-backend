@@ -53,6 +53,12 @@ public class BusStop implements ReferenceablePoint {
 		return point;
 	}
 
+	@Override
+	public String toString() {
+		return "idl: " + idl + ", idp: " + idp + ", ido: " + ido + ", " +
+			point + ", address:" + address;
+	}
+
 	private String idl;
 
 	private String ido;
