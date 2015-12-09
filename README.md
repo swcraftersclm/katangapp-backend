@@ -39,7 +39,14 @@ should display the default `Play! Framework` main page.
 
 To verify the business logic of the application, go to
 `http://localhost:9000/paradas`, that represents the endpoint of the service
-that calculates the closest bus stops to a specific point.
+that calculates the closest bus stops to a specific point. It needs the
+following parameters to work:
+
+ - lt: Latitude of a location (Double)
+ - ln: Longitude of a location (Double)
+ - r: Radius to use when searching for the closest bus stops (Integer)
+
+In example: `http://localhost:9000/paradas?lt=39.862658&ln=-4.025088&r=500`
 
 ## Backward compatibility
 To verify that the former system' business logic is working as expected, go to
