@@ -52,6 +52,8 @@ public class ResultsTest extends WithApplication {
 
 			assertThat(status(result)).isEqualTo(OK);
 			assertThat(contentType(result)).isEqualTo("text/plain");
+
+			break;
 		}
 
 	}
