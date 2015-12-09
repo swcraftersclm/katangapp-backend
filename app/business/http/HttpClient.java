@@ -2,7 +2,8 @@ package business.http;
 
 import java.text.MessageFormat;
 
-import play.libs.ws.*;
+import play.libs.ws.WS;
+import play.libs.ws.WSResponse;
 import play.libs.F.Function;
 import play.libs.F.Promise;
 

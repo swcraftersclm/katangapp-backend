@@ -1,7 +1,6 @@
 package business;
 
 import business.geolocation.GeoLocator;
-
 import business.http.HttpClient;
 import business.parser.HTMLParser;
 import business.store.BusStopStore;

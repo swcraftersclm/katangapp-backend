@@ -2,7 +2,6 @@ package controllers;
 
 import business.BusStopsFinder;
 import business.Finder;
-
 import business.http.HttpClient;
 
 import models.QueryResult;
@@ -17,14 +16,6 @@ import play.mvc.Result;
  */
 public class Results extends Controller {
 
-    public static Result unauto(String idl, String idp, String ido) {
-        HttpClient httpClient = new HttpClient();
-
-        String response = httpClient.get(idl, idp, ido);
-
-        return ok(response);
-    }
-
     public static Result index(String lt, String ln, int r) {
         Finder busStopFinder = new BusStopsFinder();
 
@@ -35,6 +26,14 @@ public class Results extends Controller {
             dLatitude, dLongitude, r);
 
         return ok(Json.toJson(queryResult));
+    }
+
+    public static Result unauto(String idl, String idp, String ido) {
+        HttpClient httpClient = new HttpClient();
+
+        String response = httpClient.get(idl, idp, ido);
+
+        return ok(response);
     }
 
 }
