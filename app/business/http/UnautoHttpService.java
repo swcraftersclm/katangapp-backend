@@ -10,9 +10,9 @@ import play.libs.F.Promise;
 /**
  * @author mdelapenya
  */
-public class HttpClient implements HttpService {
+public class UnautoHttpService implements HttpService {
 
-	public HttpClient() {
+	public UnautoHttpService() {
 	}
 
 	@Override

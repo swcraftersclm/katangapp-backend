@@ -16,7 +16,7 @@ import play.test.WithApplication;
 /**
  * @author mdelapenya
  */
-public class HttpClientTest extends WithApplication {
+public class UnautoHttpServiceTest extends WithApplication {
 
 	@Test
 	public void testGet() throws Exception {
@@ -24,7 +24,7 @@ public class HttpClientTest extends WithApplication {
 		String idp = "P001";
 		String ido = "1.00000";
 
-		HttpService httpClient = Mockito.spy(new HttpClient());
+		HttpService httpClient = Mockito.spy(new UnautoHttpService());
 
 		mockHttpService(httpClient);
 

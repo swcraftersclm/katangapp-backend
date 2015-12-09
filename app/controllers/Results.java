@@ -2,7 +2,7 @@ package controllers;
 
 import business.BusStopsFinder;
 import business.Finder;
-import business.http.HttpClient;
+import business.http.UnautoHttpService;
 import business.http.HttpService;
 
 import models.QueryResult;
@@ -50,7 +50,7 @@ public class Results extends Controller {
     }
 
     public static Result unauto(String idl, String idp, String ido) {
-        HttpService httpClient = new HttpClient();
+        HttpService httpClient = new UnautoHttpService();
 
         String response = httpClient.get(idl, idp, ido);
 
