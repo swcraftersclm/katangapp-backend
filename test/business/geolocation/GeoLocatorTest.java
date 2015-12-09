@@ -2,7 +2,7 @@ package business.geolocation;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import business.store.MockBusStopStore;
+import business.mocks.MockBusStopStore;
 
 import models.BusStop;
 import models.ReferenceablePoint;

@@ -6,7 +6,7 @@ import static play.mvc.Http.Status.OK;
 import static play.test.Helpers.contentType;
 import static play.test.Helpers.status;
 
-import business.store.MockBusStopStore;
+import business.mocks.MockBusStopStore;
 
 import models.BusStop;
 import models.Point;

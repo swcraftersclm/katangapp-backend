@@ -1,4 +1,6 @@
-package business.store;
+package business.mocks;
+
+import business.store.Store;
 
 import models.BusStop;
 
