@@ -25,7 +25,7 @@ public class QueryFinderTest extends WithApplication{
 
 	@Test
 	public void testFindRoutes() {
-		Finder busStopFinder = mockStore();
+		Finder busStopFinder = mockFinder();
 
 		Point puertaBisagra = TestPointFactory.getPuertaBisagra();
 		int radius = 2000;
@@ -40,7 +40,7 @@ public class QueryFinderTest extends WithApplication{
 
 	@Test
 	public void testFindRoutesWithoutRadiusShouldNotReturnRoutes() {
-		Finder busStopFinder = mockStore();
+		Finder busStopFinder = mockFinder();
 
 		Point puertaBisagra = TestPointFactory.getPuertaBisagra();
 		int radius = 0;
@@ -53,7 +53,7 @@ public class QueryFinderTest extends WithApplication{
 		assertThat(results).hasSize(0);
 	}
 
-	private Finder mockStore() {
+	private Finder mockFinder() {
 		Finder finder = Mockito.spy(new BusStopsFinder());
 
 		Mockito.when(finder.getStore()).thenReturn(new MockBusStopStore());
