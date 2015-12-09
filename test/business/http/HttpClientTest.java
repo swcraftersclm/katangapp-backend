@@ -17,7 +17,9 @@ public class HttpClientTest extends WithApplication {
 		String idp = "P001";
 		String ido = "1.00000";
 
-		String response = HttpClient.get(idl, idp, ido);
+		HttpClient httpClient = new HttpClient();
+
+		String response = httpClient.get(idl, idp, ido);
 
 		assertThat(response).isNotEmpty();
 	}

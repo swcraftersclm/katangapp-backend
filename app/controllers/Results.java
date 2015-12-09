@@ -18,7 +18,9 @@ import play.mvc.Result;
 public class Results extends Controller {
 
     public static Result unauto(String idl, String idp, String ido) {
-        String response = HttpClient.get(idl, idp, ido);
+        HttpClient httpClient = new HttpClient();
+
+        String response = httpClient.get(idl, idp, ido);
 
         return ok(response);
     }

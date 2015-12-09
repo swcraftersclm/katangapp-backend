@@ -11,7 +11,10 @@ import play.libs.F.Promise;
  */
 public class HttpClient {
 
-	public static String get(String idl, String idp, String ido) {
+	public HttpClient() {
+	}
+
+	public String get(String idl, String idp, String ido) {
 		String url = MessageFormat.format(ENDPOINT, idl, idp, ido);
 
 		Promise<String> documentPromise = WS.url(url).get().map(

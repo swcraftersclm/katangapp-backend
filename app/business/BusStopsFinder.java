@@ -42,10 +42,12 @@ public class BusStopsFinder implements Finder {
 			return new QueryResult(busStopResults);
 		}
 
+		HttpClient httpClient = new HttpClient();
+
 		for (ReferenceablePoint closestPoint : closestPoints) {
 			BusStop busStop = (BusStop)closestPoint;
 
-			String responseHtml = HttpClient.get(
+			String responseHtml = httpClient.get(
 				busStop.getIdl(), busStop.getIdp(), busStop.getIdo());
 
 			List<RouteResult> routeResults = HTMLParser.parseResponse(
