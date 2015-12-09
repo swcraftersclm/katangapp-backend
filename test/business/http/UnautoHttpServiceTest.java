@@ -2,16 +2,11 @@ package business.http;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import business.IOTestUtils;
-
-import java.io.IOException;
+import business.mocks.MockHttpService;
 
 import org.junit.Test;
 
-import org.mockito.Mockito;
-
 import play.test.WithApplication;
-
 
 /**
  * @author mdelapenya
@@ -24,22 +19,11 @@ public class UnautoHttpServiceTest extends WithApplication {
 		String idp = "P001";
 		String ido = "1.00000";
 
-		HttpService httpClient = Mockito.spy(new UnautoHttpService());
+		final HttpService httpService = MockHttpService.mockUnautoHttpService();
 
-		mockHttpService(httpClient);
-
-		String response = httpClient.get(idl, idp, ido);
+		String response = httpService.get(idl, idp, ido);
 
 		assertThat(response).isNotEmpty();
-	}
-
-	private void mockHttpService(HttpService client) throws IOException {
-		String mockResponse = IOTestUtils.readFile("sample-P001.html");
-
-		Mockito.when(
-			client.get(
-				Mockito.anyString(), Mockito.anyString(), Mockito.anyString())
-		).thenReturn(mockResponse);
 	}
 
 }
